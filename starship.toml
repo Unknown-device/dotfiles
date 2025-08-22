@@ -1,0 +1,90 @@
+add_newline = false
+command_timeout = 1000
+
+format = """
+$character\
+[](bg:#222222)\
+[█](fg:#222222 )\
+$directory\
+[█](fg:#222222 )\
+$fill\
+[$git_branch\
+$git_state\
+$git_status](bold bg:#111111 fg:white)\
+$cmd_duration\
+[](fg:red bg:#111111)\
+[ ](fg:#111111 bg:red)\
+$username\
+[](fg:green bg:#222222)\
+[󰌽 ](fg:green bg:#111111 inverted)\
+$hostname\
+$line_break\
+[ ❯ ](fg:bright-white)"""
+
+[character]
+format = "$symbol"
+error_symbol = "[ █](fg:red)[ ERROR](fg:black bg:red)[](fg:red bg:white)"
+success_symbol = "[ █](fg:green)[ PROMPT](fg:black bg:green)[](fg:green bg:white)"
+
+[fill]
+symbol = ' '
+
+[package]
+disabled = false
+
+[cmd_duration]
+min_time = 1000
+show_milliseconds = false
+disabled = false
+format="[󰞌 $duration ]($style)"
+style="bold bg:#111111"
+
+[directory]
+truncation_length = 5
+format = "[󰉋 $path]($style)[$lock_symbol]($lock_style)"
+style = "bold fg:white bg:#222222"
+read_only = "🔒"
+read_only_style= "bold white"
+
+[username]
+show_always = true
+style_user = "bg:#222222"
+style_root = "bg:#222222"
+format = '[ $user ]($style)'
+
+[hostname]
+format = "[ $hostname ]($style)"
+ssh_only = false
+trim_at = ".companyname.com"
+disabled = false
+style = "fg:green bg:#222222"
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"
+
+[status]
+style = "bg:transparent"
+symbol = "💥 "
+format = '($style)'
+disabled = false
+
+[git_branch]
+format = " 󰘬 $branch"
+style = "bold fg:green bg:#111111"
+
+[git_status]
+format = " $conflicted$untracked$modified$staged$renamed$deleted$ahead_behind$stashed"
+style = "cyan"
+conflicted = ""
+untracked = ""
+modified = ""
+staged = ""
+renamed = ""
+deleted = ""
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "cyan"
+
